@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <section>
+        <h2>О нашем продукте</h2>
+        <p>Наш продукт предлагает уникальные возможности для оптимизации вашего бизнеса. Мы предоставляем лучшие инструменты, которые помогут вам достичь успеха.</p>
+    </section>
+
+    <section>
+        <h2>Преимущества</h2>
+        <ul>
+            <li>Удобный интерфейс</li>
+            <li>Высокая производительность</li>
+            <li>Поддержка 24/7</li>
+            <li>Гибкие тарифы</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Присоединяйтесь к нам!</h2>
+        <p>Не упустите возможность улучшить свой бизнес. Зарегистрируйтесь сегодня и получите бесплатный пробный период!</p>
+        <form action="/submit" method="post">
+            <div class="form-group">
+                <label for="first_name">Имя (обязательно):</label>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Фамилия (обязательно):</label>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email (обязательно):</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Номер телефона:</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="telegram">Ссылка на Telegram:</label>
+                <input id="telegram" name="telegram">
+            </div>
+
+            <button type="submit" class="cta">Отправить</button>
+        </form>
+    </section>
+
+
+    <section id="contact">
+        <h2>Контакты</h2>
+        <p>Если у вас есть вопросы, свяжитесь с нами:</p>
+        <p>Email: kvandotech@gmail.com</p>
+        <p>Телефон: +7 900 693 18 95</p>
+    </section>
+</div>
+
+{% endblock %}

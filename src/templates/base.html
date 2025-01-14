@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %} {% endblock %}
+    <title>Ваш Продукт</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Добро пожаловать в наш сервис!</h1>
+    <p>Лучшие решения для вашего бизнеса</p>
+</header>
+
+{% block content %}{% endblock %}
+
+<footer>
+    <p>&copy; 2023 Ваш Сервис. Все права защищены. </p>
+    <img src="{{ url_for('static', path='icon.jpg') }}" class="footer-logo" alt="Логотип">
+</footer>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</body>
+</html>
