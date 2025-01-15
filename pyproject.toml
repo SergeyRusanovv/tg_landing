@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "tg-landing"
+name = "src"
 version = "0.1.0"
 description = ""
 authors = ["Sergey Rusanov <sergeikulyb@mail.ru>"]

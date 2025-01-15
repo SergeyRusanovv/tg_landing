@@ -10,7 +10,7 @@ class _AppConfig(BaseSettings):
     APP_PORT: int = 8000
 
     class Config:
-        env_file = "../.env"
+        env_file = ".env"
         env_file_encoding = "utf-8"
 
 
