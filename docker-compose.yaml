@@ -7,7 +7,6 @@ services:
   bot:
     build:
       dockerfile: Dockerfile.bot
-
   nginx:
     image: nginx:1.26.2
     container_name: nginx
