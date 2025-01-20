@@ -13,6 +13,7 @@ services:
     restart: always
     environment:
       - DOMAIN_NAME=telegrambottest.kvando.tech
+      - TZ=Europe/Moscow
     ports:
       - 80:80
       - 443:443
@@ -20,4 +21,6 @@ services:
       - web
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - /root/certificate:/etc/ssl
+#      - /root/certificate:/etc/ssl
+      - /var/www/certbot:/usr/share/nginx/html
+      - /etc/letsencrypt/tgbotkeys:/etc/ssl
