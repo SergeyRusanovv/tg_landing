@@ -24,3 +24,4 @@ services:
 #      - /root/certificate:/etc/ssl
       - /var/www/certbot:/usr/share/nginx/html
       - /etc/letsencrypt/tgbotkeys:/etc/ssl
+      - /tg_landing/src/static:/usr/share/nginx/static
