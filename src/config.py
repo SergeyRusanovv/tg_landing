@@ -16,9 +16,11 @@ class _AppConfig(BaseSettings):
     SMTP_USER: str
     SMTP_PASSWORD: str
 
+    TG_CHAT_ID: int
+
     class Config:
-        # env_file = "../.env"
-        env_file = ".env"
+        env_file = "../.env"
+        # env_file = ".env"
         env_file_encoding = "utf-8"
 
 
