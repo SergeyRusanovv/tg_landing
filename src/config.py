@@ -6,7 +6,7 @@ class _AppConfig(BaseSettings):
     BOT_TOKEN: SecretStr
     WEBAPP_URL: str
 
-    APP_HOST: str = "localhost"
+    APP_HOST: str = "0.0.0.0"
     APP_PORT: int = 8000
 
     SMTP_HOST: str
