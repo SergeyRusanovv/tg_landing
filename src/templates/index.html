@@ -20,7 +20,7 @@
     <section>
         <h2>Присоединяйтесь к нам!</h2>
         <p>Не упустите возможность улучшить свой бизнес. Зарегистрируйтесь сегодня и получите бесплатный пробный период!</p>
-        <form action="/submit" method="post">
+        <form action="/submit" method="post" onsubmit="return validateTelegramLink()">
             <div class="form-group">
                 <label for="first_name">Имя (обязательно):</label>
                 <input type="text" id="first_name" name="first_name" required>
@@ -38,12 +38,12 @@
 
             <div class="form-group">
                 <label for="phone">Номер телефона:</label>
-                <input type="tel" id="phone" name="phone">
+                <input type="tel" id="phone" name="phone" required>
             </div>
 
             <div class="form-group">
                 <label for="telegram">Ссылка на Telegram:</label>
-                <input id="telegram" name="telegram">
+                <input id="telegram" name="telegram" required>
             </div>
 
             <button type="submit" class="cta">Отправить</button>
@@ -58,5 +58,16 @@
         <p>Телефон: +7 900 693 18 95</p>
     </section>
 </div>
+<script>
+function validateTelegramLink() {
+    const telegramInput = document.getElementById('telegram').value;
+    const telegramRegex = /^(https?:\/\/t\.me\/[a-zA-Z0-9_]+|tg:\/\/resolve\?domain=[a-zA-Z0-9_]+)$/;
 
+    if (!telegramRegex.test(telegramInput)) {
+        alert('Пожалуйста, введите корректную ссылку на Telegram в формате (https://t.me/username).');
+        return false; // Отменяем отправку формы
+    }
+    return true; // Разрешаем отправку формы
+}
+</script>
 {% endblock %}
