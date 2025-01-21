@@ -19,8 +19,8 @@ class _AppConfig(BaseSettings):
     TG_CHAT_ID: int
 
     class Config:
-        env_file = "../.env"
-        # env_file = ".env"
+        # env_file = "../.env"
+        env_file = ".env"
         env_file_encoding = "utf-8"
 
 
