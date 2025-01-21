@@ -49,28 +49,30 @@ async def submit(
     phone: str = Form(...),
     telegram: str = Form(...),
 ):
+    try:
+        send_email = EmailMessage()
+        send_email["Subject"] = "Здравствуйте"
+        send_email["From"] = AppConfig.SMTP_USER
+        send_email["To"] = email
+        send_email['Disposition-Notification-To'] = AppConfig.SMTP_USER
 
-    send_email = EmailMessage()
-    send_email["Subject"] = "Здравствуйте"
-    send_email["From"] = AppConfig.SMTP_USER
-    send_email["To"] = email
-    send_email['Disposition-Notification-To'] = AppConfig.SMTP_USER
+        send_email.set_content(
+            "<div>"
+            f'<h1 style="color: red;">Здравствуйте! {first_name} {last_name} 😊</h1><p>Ваши данные из рекламы получены. '
+            f'Email: {email}, Телефон: {phone}, Ссылка в телеграмм: {telegram}</p></div>',
+            subtype="html",
+        )
 
-    send_email.set_content(
-        "<div>"
-        f'<h1 style="color: red;">Здравствуйте! {first_name} {last_name} 😊</h1><p>Ваши данные из рекламы получены. '
-        f'Email: {email}, Телефон: {phone}, Ссылка в телеграмм: {telegram}</p></div>',
-        subtype="html",
-    )
-
-    with smtplib.SMTP_SSL(AppConfig.SMTP_HOST, AppConfig.SMTP_PORT) as server:
-        server.login(AppConfig.SMTP_USER, AppConfig.SMTP_PASSWORD)
-        server.send_message(send_email)
-
+        with smtplib.SMTP_SSL(AppConfig.SMTP_HOST, AppConfig.SMTP_PORT) as server:
+            server.login(AppConfig.SMTP_USER, AppConfig.SMTP_PASSWORD)
+            server.send_message(send_email)
+    except Exception as e:
+        logger.error(e)
+        return templates.TemplateResponse("error_email.html", {"request": request})
 
     await bot.send_message(
         chat_id=AppConfig.TG_CHAT_ID,
-        text=f"Имя: {first_name}\nФамилия: {last_name}\nEmail: {email}\nTelegram url: {telegram}\nНомер телефона: {phone}"
+        text=f"Информация о заказчике услуги:\nИмя: {first_name}\nФамилия: {last_name}\nEmail: {email}\nTelegram url: {telegram}\nНомер телефона: {phone}"
     )
 
     return templates.TemplateResponse("submit.html", {"request": request})
