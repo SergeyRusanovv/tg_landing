@@ -20,4 +20,4 @@ RUN apt-get update \
 COPY ./src /src
 COPY .env /src
 
-CMD ["python3", "new_main.py"]
+CMD ["python3", "main.py"]
