@@ -8,7 +8,6 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 import smtplib
-from smtplib import SMTPRecipientsRefused
 from email.message import EmailMessage
 from config import AppConfig
 import logging
