@@ -2,8 +2,6 @@ services:
   web:
     build:
       dockerfile: Dockerfile
-    ports:
-      - 8000:8000
   nginx:
     image: nginx:1.26.2
     container_name: nginx
@@ -22,3 +20,9 @@ services:
       - /var/www/certbot:/usr/share/nginx/html
       - /etc/letsencrypt/tgbotkeys:/etc/ssl
       - /tg_landing/src/static:/usr/share/nginx/static
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
