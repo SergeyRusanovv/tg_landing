@@ -4,6 +4,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8000:8000
+    networks:
+      - mynetwork
   nginx:
     image: nginx:1.26.2
     container_name: nginx
